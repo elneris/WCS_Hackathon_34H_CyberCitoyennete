@@ -33,11 +33,6 @@ class Category
      */
     private $questions;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $level;
-
     public function __construct()
     {
         $this->progressions = new ArrayCollection();

@@ -28,7 +28,7 @@ class CategoryController extends AbstractController
     /**
      * @Route("/ajouter", name="new")
      */
-    public function createCategory(Request $request, EntityManagerInterface $em)
+    public function new(Request $request, EntityManagerInterface $em)
     {
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
@@ -46,5 +46,38 @@ class CategoryController extends AbstractController
         return $this->render('admin/category/new_category.html.twig', [
             'categoryForm' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/modifier/{id}", name="update")
+     */
+    public function update(Request $request, EntityManagerInterface $em,  Category $category)
+    {
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('admin_category_index');
+        }
+
+        return $this->render('admin\category\update.html.twig', [
+            'form' => $form->createView()
+        ]);
+
+    }
+
+    /**
+     * @Route("/supprimer/{id}", name="delete")
+     */
+    public function delete(Request $request, EntityManagerInterface $em, Category $category)
+    {
+        $em->remove($category);
+        $em->flush();
+
+        return $this->redirectToRoute('admin_category_index');
+
     }
 }

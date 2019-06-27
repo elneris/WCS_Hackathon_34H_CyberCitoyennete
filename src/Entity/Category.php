@@ -33,16 +33,6 @@ class Category
      */
     private $questions;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $level;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="categoryStep")
-     */
-    private $users;
-
     public function __construct()
     {
         $this->progressions = new ArrayCollection();

@@ -13,7 +13,6 @@ class UserController extends AbstractController
     /**
      * @Route("/user", name="user_index")
      * @param CategoryRepository $categories
-     * @param User $user
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(CategoryRepository $categories)

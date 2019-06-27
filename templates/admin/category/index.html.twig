@@ -1,11 +1,31 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminbase.html.twig' %}
 
 {% block title %}Liste des catégories{% endblock %}
 
 {% block body %}
+
     <h1>Les catégories</h1>
 
-
-
-
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Catégories</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in allCategories %}
+            <tr>
+                <th scope="row">{{ category.id }}</th>
+                <td>{{ category.name }}</td>
+                <td>
+                    <a  href="{{ path('admin_category_update', {id: category.id}) }}">Modifier</a>
+                    |
+                    <a  href="{{ path('admin_category_delete', {id: category.id}) }}" class="category-delete">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

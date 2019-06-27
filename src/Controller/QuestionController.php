@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: laure
- * Date: 2019-06-28
- * Time: 00:07
- */
 
 namespace App\Controller;
-
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,4 +14,5 @@ class QuestionController extends AbstractController
  {
      return $this->render('user/question.html.twig');
  }
+
 }

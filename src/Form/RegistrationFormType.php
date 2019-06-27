@@ -45,6 +45,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('class', EntityType::class, [
+                'choice_label' => 'name',
                 'label' => 'Choix de la classe',
                 'class' => Classe::class,
                 'required' => false,

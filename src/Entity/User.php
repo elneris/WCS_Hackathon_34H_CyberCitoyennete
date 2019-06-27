@@ -57,17 +57,17 @@ class User implements UserInterface
      */
     private $tentatives;
 
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $categoryStep;
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Classe", inversedBy="users")
      * @ORM\JoinColumn(nullable=true)
      */
     private $class;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categoryStep;
 
     public function __construct()
     {
@@ -239,18 +239,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCategoryStep(): ?int
-    {
-        return $this->categoryStep;
-    }
-
-    public function setCategoryStep(int $categoryStep): self
-    {
-        $this->categoryStep = $categoryStep;
-
-        return $this;
-    }
-
     public function getClass(): ?Classe
     {
         return $this->class;
@@ -259,6 +247,18 @@ class User implements UserInterface
     public function setClass(?Classe $class): self
     {
         $this->class = $class;
+
+        return $this;
+    }
+
+    public function getCategoryStep(): ?Category
+    {
+        return $this->categoryStep;
+    }
+
+    public function setCategoryStep(?Category $categoryStep): self
+    {
+        $this->categoryStep = $categoryStep;
 
         return $this;
     }

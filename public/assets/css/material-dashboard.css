@@ -1,19 +1,29 @@
-/*!
+.opacity{
+  opacity:0.5;
+}
 
- =========================================================
- * Material Dashboard Pro - v2.1.0
- =========================================================
+.bonhomme1{
+  position: relative;
+  left: 20%;
+}
+.bonhomme2{
+  position: relative;
+  left: 40%;
+}
 
- * Product Page: https://www.creative-tim.com/product/material-dashboard-pro
- * Copyright 2018 Creative Tim (http://www.creative-tim.com)
+.bonhomme3{
+  position: relative;
+  left:60%;
+}
 
- =========================================================
-
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
- */
-
-/*     brand Colors              */
+.bonhomme4{
+  position: relative;
+  left:77%;
+}
+.categories{
+  margin-top: 120px;
+}
+/*TEMPLATE*/
 
 .card {
   font-size: .875rem;

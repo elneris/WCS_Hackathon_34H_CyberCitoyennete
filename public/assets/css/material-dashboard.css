@@ -1,3 +1,16 @@
+.winner-certification{
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  width: 900px;
+}
+
+.winner-name{
+  position: absolute;
+  top: 46%;
+  left: 43%;
+}
+
 .opacity{
   opacity:0.5;
 }

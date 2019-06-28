@@ -3,6 +3,10 @@
 {% block title %}Question 1{% endblock %}
 
 {% block body %}
+
+    <div class="question_media">
+        <img src="/assets/images/slide1.jpg" alt="q1">
+    </div>
     <h1>{{ question.value }}</h1>
     <a href="{{ path('user_question2', {value:1, id:app.user.id}) }}">{{ question.goodAnswer }}</a>
     <a href="{{ path('user_question2', {value:0, id:app.user.id}) }}">{{ question.wrongAnswerOne }}</a>

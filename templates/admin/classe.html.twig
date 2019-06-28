@@ -1,0 +1,29 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Liste des classes{% endblock %}
+
+{% block body %}
+
+    <h1>Toutes les classes</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Classes</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for classe in allClasse %}
+            <tr>
+                <th scope="row">{{ classe.id }}</th>
+                <td>{{ classe.name }}</td>
+                <td>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

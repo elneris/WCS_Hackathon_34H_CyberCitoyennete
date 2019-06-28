@@ -5,16 +5,16 @@
 {% block body %}
     <div class="images text-center">
         {% for category in categories %}
-            {% if app.user.categoryStep.id == category.id %}<img src="assets/images/bonhomme.png" class="bonhomme{{ app.user.categoryStep.id }}">{% endif %}
+            {% if app.user.categoryStep.id == category.id %}<img src="/assets/images/bonhomme.png" class="bonhomme{{ app.user.categoryStep.id }}">{% endif %}
         {% endfor %}
-        <img src="assets/images/trait.png">
-        <img src="assets/images/Coupe.png">
+        <img src="/assets/images/trait.png">
+        <img src="/assets/images/Coupe.png">
     </div>
     <div class="row mt-4">
         <div class="col-6">
             <div class="row pl-3 categories">
                 {% for category in categories %}
-                    <a class="col-5 p-3 m-4 text-center {% if app.user.categoryStep.id >= category.id %}bg-success{% else %}bg-dark{% endif %}">
+                    <a href="{{ path('user_questionnaire', {id:app.user.id}) }}" class="col-5 p-3 m-4 text-center {% if app.user.categoryStep.id >= category.id %}bg-success{% else %}bg-dark{% endif %}">
                         {{ category.name }}
                     </a>
                 {% endfor %}
@@ -23,7 +23,7 @@
 
         <div class="badges col-6 border mt-4">
             <div class="avatar text-center">
-                <img src="assets/images/avatar.png">
+                <img src="/assets/images/avatar.png">
                 </div>
             <div class="text-center p-3 font-weight-bold">
             {{ app.user.firstname }}
@@ -31,7 +31,7 @@
             </div>
             <div class="row justify-content-around">
                 {% for category in categories %}
-                <img src="assets/images/badge{{ category.id }}.png" class="{% if app.user.categoryStep.id >= category.id %} {% else %}opacity{% endif %}">
+                <img src="/assets/images/badge{{ category.id }}.png" class="{% if app.user.categoryStep.id >= category.id %} {% else %}opacity{% endif %}">
                 {% endfor %}
             </div>
         </div>

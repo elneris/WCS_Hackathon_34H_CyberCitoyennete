@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Question 1{% endblock %}
+
+{% block body %}
+
+    <div class="question_media p-3 text-center">
+        <img src="/assets/images/slide1.jpg" alt="q1" class="w-75">
+        <h2>{{ question.value }}</h2>
+    </div>
+<div class="reponses">
+    <div class="row text-center">
+    <a href="{{ path('user_question2', {value:1, id:app.user.id}) }}" class="bouton_reponse border col-3 offset-3 p-4">{{ question.goodAnswer }}</a>
+    <a href="{{ path('user_question2', {value:0, id:app.user.id}) }}" class="bouton_reponse border col-3 p-4">{{ question.wrongAnswerOne }}</a>
+    </div>
+    <div class="row text-center">
+    <a href="{{ path('user_question2', {value:0, id:app.user.id}) }}" class="bouton_reponse border col-3 offset-3 p-4">{{ question.wrongAnswerTwo }}</a>
+    <a href="{{ path('user_question2', {value:0, id:app.user.id}) }}" class="bouton_reponse border col-3 p-4">{{ question.wrongAnswerThree }}</a>
+    </div>
+</div>
+{% endblock %}

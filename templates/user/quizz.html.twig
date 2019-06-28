@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+   <div class="row justify-content-center" style="padding: 30px">
+      <img src="{{ asset('assets/img/faces/avatar.jpg') }}" alt="image" class="mr-auto ml-auto">
+   </div>
+   <h1 class="text-center" style="padding: 40px">En voyant ce post, quelle est ta réaction?</h1>
+   <div class="text-center ml-auto mr-auto">
+   <button class="btn" style="margin: 20px" type="submit">Je commente négativement</button>
+   <button class="btn" style="margin: 20px" type="submit">Je like</button>
+   <button class="btn" style="margin: 20px" type="submit">Je commente positivement</button>
+   <button class="btn" style="margin: 20px" type="submit">J'ignore</button>
+   </div>
+{% endblock %}

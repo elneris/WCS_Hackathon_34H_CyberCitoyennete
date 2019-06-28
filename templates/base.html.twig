@@ -15,7 +15,17 @@
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
+
+
+        {% for question, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ question }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
         {% block body %}{% endblock %}
+
 
 {% block javascripts %}
     <!--   Core JS Files   -->

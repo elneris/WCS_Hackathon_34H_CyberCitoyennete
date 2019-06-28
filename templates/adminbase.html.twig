@@ -41,6 +41,13 @@
     <br>
     <br>
     <div class="container">
+        {% for question, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ question }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
         {% block body %}{% endblock %}
     </div>
 

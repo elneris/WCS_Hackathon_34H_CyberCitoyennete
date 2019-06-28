@@ -9,13 +9,13 @@
 
     {{ form_start(questionForm) }}
 
-    {{ form_row(questionForm.value) }}
-    {{ form_row(questionForm.goodAnswer) }}
-    {{ form_row(questionForm.wrongAnswerOne) }}
-    {{ form_row(questionForm.wrongAnswerTwo) }}
-    {{ form_row(questionForm.wrongAnswerThree) }}
-    {{ form_row(questionForm.category) }}
-    <button class="btn" type="submit">Valider</button>
+    {{ form_row(questionForm.value, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_row(questionForm.goodAnswer, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_row(questionForm.wrongAnswerOne, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_row(questionForm.wrongAnswerTwo, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_row(questionForm.wrongAnswerThree, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_row(questionForm.category, { 'attr': {'class': 'form-control'} }) }}
+    <button class="btn" type="submit">Ajouter</button>
     {{ form_end(questionForm) }}
 
 {% endblock %}

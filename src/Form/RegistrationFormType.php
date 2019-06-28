@@ -19,7 +19,7 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('firstname',null ,[
-                'label' => "Prenom"
+                'label' => "Prénom"
             ])
             ->add('lastname', null, [
                 'label' => "Nom"
@@ -30,10 +30,10 @@ class RegistrationFormType extends AbstractType
                 'required' => true,
                 'first_options' => [
                     'label' => 'Mot de passe',
-                    'attr' => ['placeholder' => 'Mot de passe']],
+                    ],
                 'second_options' => [
                     'label' => 'Répéter le Mot de passe',
-                    'attr' => ['placeholder' => 'Confirmation du mot de passe']],
+                    ],
                 'mapped' => false,
                 'constraints' => [ new NotBlank([
                     'message' => 'Entrer un mot de passe',

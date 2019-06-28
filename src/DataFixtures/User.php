@@ -27,7 +27,7 @@ class User extends Fixture implements DependentFixtureInterface
         $admin->setPassword($this->passwordEncoder->encodePassword($admin, 'Elneris.Dang2019'));
         $admin->setLogin('Elneris.Dang');
         $admin->setRoles(['ROLE_ADMIN']);
-        $admin->setCategoryStep(4);
+        $admin->setCategoryStep($this->getReference('cat'));
         $manager->persist($admin);
         $this->addReference('admin', $admin);
 
@@ -37,7 +37,7 @@ class User extends Fixture implements DependentFixtureInterface
         $eleve->setPassword($this->passwordEncoder->encodePassword($eleve, 'Jimmy.Achour2019'));
         $eleve->setLogin('Jimmy.Achour');
         $eleve->setRoles(['ROLE_USER']);
-        $eleve->setCategoryStep(1);
+        $eleve->setCategoryStep($this->getReference('cat'));
         $manager->persist($eleve);
         $this->addReference('eleve', $eleve);
         $manager->flush();

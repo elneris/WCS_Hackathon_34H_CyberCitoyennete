@@ -1,0 +1,21 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Ajouter une question{% endblock %}
+
+{% block body %}
+    <h1>Ajouter une nouvelle question</h1>
+
+
+
+    {{ form_start(questionForm) }}
+
+    {{ form_row(questionForm.value) }}
+    {{ form_row(questionForm.goodAnswer) }}
+    {{ form_row(questionForm.wrongAnswerOne) }}
+    {{ form_row(questionForm.wrongAnswerTwo) }}
+    {{ form_row(questionForm.wrongAnswerThree) }}
+    {{ form_row(questionForm.category) }}
+    <button class="btn" type="submit">Valider</button>
+    {{ form_end(questionForm) }}
+
+{% endblock %}

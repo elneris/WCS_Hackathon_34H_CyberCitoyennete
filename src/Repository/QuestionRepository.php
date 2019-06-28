@@ -36,15 +36,16 @@ class QuestionRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Question
+
+    /*public function findAllbyCategory(): ?Question
     {
+        $qb->
         return $this->createQueryBuilder('q')
             ->andWhere('q.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
         ;
-    }
-    */
+    }*/
+
 }

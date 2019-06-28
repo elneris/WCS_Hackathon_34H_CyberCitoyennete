@@ -27,7 +27,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/create/classe", name="create_classe")
+     * @Route("/admin/classe/ajouter", name="create_classe")
      */
     public function createClasse(Request $request, EntityManagerInterface $manager)
     {
@@ -48,6 +48,16 @@ class AdminController extends AbstractController
 
         return $this->render('class/createClasse.html.twig',[
             'classeForm' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/classe", name="admin_classe")
+     */
+    public function classe(ClasseRepository $classeRepository)
+    {
+        return $this->render('admin/classe.html.twig', [
+            'allClasse' => $classeRepository->findAll()
         ]);
     }
 }

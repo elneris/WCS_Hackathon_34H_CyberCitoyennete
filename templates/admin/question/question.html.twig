@@ -1,0 +1,29 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block body %}
+    <h1>Les questions</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Questions</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for question in allQuestions %}
+            <tr>
+                <th scope="row">{{ question.id }}</th>
+                <td>{{ question.value }}</td>
+                <td>
+                    <a  href=" ">Modifier</a>
+                    |
+                    <a  href=" " class="category-delete">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

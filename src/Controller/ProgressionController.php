@@ -177,7 +177,7 @@ class ProgressionController extends AbstractController
         } elseif ($count == 2) {
             $this->addFlash(
                 'warning',
-                'Ce niveau est terminée mais vous n\'avez répondu juste à toute les réponses'
+                'Ce niveau est terminé mais vous n\'avez pas répondu juste à toutes les questions'
             );
             $progression = $progressionRepository->findOneBy(['user' => $user, 'category' => 1]);
             $progression->setValid(true);
@@ -188,7 +188,7 @@ class ProgressionController extends AbstractController
         } else {
             $this->addFlash(
                 'danger',
-                'Vous n\'avez pas bien répondu'
+                'Vous n\'avez pas bien répondu, demande de l\'aide à ton professeur'
             );
         }
 

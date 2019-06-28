@@ -13,38 +13,14 @@
             <li class="nav-item active ">
                 <a class="nav-link" href="{{ path('admin_index') }}">
                     <i class="material-icons">dashboard</i>
-                    <p> Dashboard </p>
+                    <p> Tableau de bord </p>
                 </a>
             </li>
             <li class="nav-item active ">
                 <a class="nav-link" href="{{ path('app_logout') }}">
                     <i class="material-icons">logout</i>
-                    <p> Logout </p>
+                    <p> Déconnexion </p>
                 </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" data-toggle="collapse" href="#categorie">
-                    <i class="material-icons">image</i>
-                    <p> Categories
-                        <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse" id="categorie">
-                    <ul class="nav">
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{{ path('admin_category_index') }}">
-                                <span class="sidebar-mini"> <i class="fa fa-eye"></i> </span>
-                                <span class="sidebar-normal"> Toutes les catégories </span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{{ path('admin_category_new') }}">
-                                <span class="sidebar-mini"> <i class="fa fa-plus"></i> </span>
-                                <span class="sidebar-normal"> Ajouter </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" data-toggle="collapse" href="#classe">
@@ -121,7 +97,30 @@
                     </ul>
                 </div>
             </li>
-
+            <li class="nav-item ">
+                <a class="nav-link" data-toggle="collapse" href="#categorie">
+                    <i class="material-icons">image</i>
+                    <p> Categories
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="categorie">
+                    <ul class="nav">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ path('admin_category_index') }}">
+                                <span class="sidebar-mini"> <i class="fa fa-eye"></i> </span>
+                                <span class="sidebar-normal"> Toutes les catégories </span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ path('admin_category_new') }}">
+                                <span class="sidebar-mini"> <i class="fa fa-plus"></i> </span>
+                                <span class="sidebar-normal"> Ajouter </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
         </ul>
     </div>
 </div>

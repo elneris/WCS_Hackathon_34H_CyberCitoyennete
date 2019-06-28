@@ -6,6 +6,7 @@ use App\Entity\Classe;
 use App\Entity\User;
 use App\Form\ClasseType;
 use App\Repository\ClasseRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,10 +17,12 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin", name="admin_index")
      */
-    public function index()
+    public function index(UserRepository $userRepository, ClasseRepository $classeRepository)
     {
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
+            'allStudent' => $userRepository->findAll(),
+            'allClasse' => $classeRepository->findAll()
         ]);
     }
 

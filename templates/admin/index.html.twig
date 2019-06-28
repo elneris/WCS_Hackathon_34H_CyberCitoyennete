@@ -4,10 +4,45 @@
 
 {% block body %}
 
+    <h1>Bienvenue : Aurelien Barbier</h1>
 
-<div class="table">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Liste des classes
+        </a>
 
-    This friendly message is coming from:
-</div>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="{{ path('admin_index') }}">Toutes</a>
+            {% for classe in allClasse %}
+            <a class="dropdown-item" href="{{ path('admin_filter_index', {id: classe.id}) }}">{{ classe.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Classe</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for student in allStudent %}
+            {% if student.class is not empty %}
+            <tr>
+                <th scope="row">{{ student.id }}</th>
+                <td>{{ student.firstname }}</td>
+                <td>{{ student.lastname }}</td>
+                <td>{{ student.class.name }}</td>
+                <td>
+                    <a  href="{{ path('admin_category_update', {id: student.id}) }}">Voir</a>
+                </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

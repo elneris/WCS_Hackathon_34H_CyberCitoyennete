@@ -6,8 +6,8 @@
     <h1>Ajouter une nouvelle classe</h1>
 
     {{ form_start(classeForm) }}
-    {{ form_row(classeForm.name) }}
+    {{ form_row(classeForm.name, { 'attr': {'class': 'form-control'} }) }}
 
-    <button class="btn">Créer</button>
+    <button class="btn">Ajouter</button>
     {{ form_end(classeForm) }}
 {% endblock %}

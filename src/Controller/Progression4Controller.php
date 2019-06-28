@@ -162,15 +162,16 @@ class Progression4Controller extends AbstractController
                 $count++;
             }
         }
+
         if ($count == 3){
-            $progression = $progressionRepository->findOneBy(['user' => $user, 'category' => 3]);
+            $progression = $progressionRepository->findOneBy(['user' => $user, 'category' => 4]);
             $progression->setValid(true);
-            $user->setCategoryStep($categoryRepository->findOneBy(['id' => 3]));
+            $user->setCategoryStep($categoryRepository->findOneBy(['id' => 4]));
             $em->persist($progression);
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('user_winner');
+            return $this->render('winner.html.twig', ['user' => $user]);
 
         } else {
             $this->addFlash(

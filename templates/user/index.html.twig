@@ -1,20 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Tableau de bord{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="images text-center">
+        {% for category in categories %}
+            {% if app.user.categoryStep.id == category.id %}<img src="assets/images/bonhomme.png" class="bonhomme{{ app.user.categoryStep.id }}">{% endif %}
+        {% endfor %}
+        <img src="assets/images/trait.png">
+        <img src="assets/images/Coupe.png">
+    </div>
+    <div class="row mt-4">
+        <div class="col-6">
+            <div class="row pl-3 categories">
+                {% for category in categories %}
+                    <a class="col-5 p-3 m-4 text-center {% if app.user.categoryStep.id >= category.id %}bg-success{% else %}bg-dark{% endif %}">
+                        {{ category.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="badges col-6 border mt-4">
+            <div class="avatar text-center">
+                <img src="assets/images/avatar.png">
+                </div>
+            <div class="text-center p-3 font-weight-bold">
+            {{ app.user.firstname }}
+            {{ app.user.lastname }}
+            </div>
+            <div class="row justify-content-around">
+                {% for category in categories %}
+                <img src="assets/images/badge{{ category.id }}.png" class="{% if app.user.categoryStep.id >= category.id %} {% else %}opacity{% endif %}">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/florent/Workspace/hackathon2/src/Controller/UserController.php'|file_link(0) }}">src/Controller/UserController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/florent/Workspace/hackathon2/templates/user/index.html.twig'|file_link(0) }}">templates/user/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}

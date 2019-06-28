@@ -38,7 +38,7 @@
                 <td>{{ student.lastname }}</td>
                 <td>{{ student.class.name }}</td>
                 <td>
-                    <a  href="{{ path('admin_category_update', {id: student.id}) }}">Voir</a>
+                    <a  href="{{ path('admin_student_profil', {id: student.id}) }}">Voir</a>
                 </td>
             </tr>
             {% endif %}

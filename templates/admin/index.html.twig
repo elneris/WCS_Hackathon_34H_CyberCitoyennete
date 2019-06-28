@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <h1>Bienvenue : Aurelien Barbier</h1>
+    <h1>Bienvenue : {{ app.user.firstname }} {{ app.user.lastname }}</h1>
 
     <div class="dropdown">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

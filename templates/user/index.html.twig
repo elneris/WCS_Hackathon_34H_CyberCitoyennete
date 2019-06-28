@@ -14,7 +14,7 @@
         <div class="col-6">
             <div class="row pl-3 categories">
                 {% for category in categories %}
-                    <a class="col-5 p-3 m-4 text-center {% if app.user.categoryStep.id >= category.id %}bg-success{% else %}bg-dark{% endif %}">
+                    <a href="{{ path('user_questionnaire', {id:app.user.id}) }}" class="col-5 p-3 m-4 text-center {% if app.user.categoryStep.id >= category.id %}bg-success{% else %}bg-dark{% endif %}">
                         {{ category.name }}
                     </a>
                 {% endfor %}

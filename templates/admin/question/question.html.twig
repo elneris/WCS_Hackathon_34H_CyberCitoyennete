@@ -8,6 +8,7 @@
         <tr>
             <th scope="col"></th>
             <th scope="col">Questions</th>
+            <th scope="col">Catégorie</th>
             <th scope="col">Actions</th>
         </tr>
         </thead>
@@ -16,6 +17,7 @@
             <tr>
                 <th scope="row">{{ question.id }}</th>
                 <td>{{ question.value }}</td>
+                <td>{{ question.category.name }}</td>
                 <td>
                     <a  href=" ">Modifier</a>
                     |

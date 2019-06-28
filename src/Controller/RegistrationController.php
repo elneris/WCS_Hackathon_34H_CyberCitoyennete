@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/admin/create/student", name="admin_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function register(Request $request,CategoryRepository $categoryRepository, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -31,7 +32,7 @@ class RegistrationController extends AbstractController
             );
 
             $user->setLogin($form->getData()->getFirstname(). '.' . $form->getData()->getLastname());
-            $user->setCategoryStep(1);
+            $user->setCategoryStep($categoryRepository->findOneBy(['id' => 1]));
             $entityManager = $this->getDoctrine()->getManager();
 
             $entityManager->persist($user);

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Question 1{% endblock %}
+
+{% block body %}
+    <h1>{{ question.value }}</h1>
+    <a href="{{ path('user_question2', {value:1, id:app.user.id}) }}">{{ question.goodAnswer }}</a>
+    <a href="{{ path('user_question2', {value:0, id:app.user.id}) }}">{{ question.wrongAnswerOne }}</a>
+    <a href="{{ path('user_question2', {value:0, id:app.user.id}) }}">{{ question.wrongAnswerTwo }}</a>
+    <a href="{{ path('user_question2', {value:0, id:app.user.id}) }}">{{ question.wrongAnswerThree }}</a>
+{% endblock %}

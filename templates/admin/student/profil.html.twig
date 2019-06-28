@@ -22,7 +22,7 @@
                 <li class="active"><a data-toggle="tab" href="#home">&nbsp; | &nbsp;</a></li>
                 <li><a data-toggle="tab" href="#messages">&nbsp; Question</a></li>
                 <li><a data-toggle="tab" href="#messages">&nbsp; | &nbsp;</a></li>
-                <li><a data-toggle="tab" href="#settings">&nbsp; Menu 2</a></li>
+                <li><a data-toggle="tab" href="#settings">&nbsp; Statistiques</a></li>
             </ul>
 
 
@@ -56,8 +56,8 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Enregistrer</button>
+                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reintialiser</button>
                             </div>
                         </div>
                     </form>
@@ -66,15 +66,44 @@
 
                 </div><!--/tab-pane-->
                 <div class="tab-pane" id="messages">
-
-                    <h2>coucou</h2>
+                    {% for answer in answers %}
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>{{ answer.question.value }}</h3>
+                            </div>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    {% if answer.response %}
+                                         <p><span class="good-answer">Bonne réponse</span></p>
+                                    {% else %}
+                                        <p><span class="bad-answer">Mauvaise réponse</span></p>
+                                    {% endif %}
+                                </blockquote>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="alert">{{ user.firstname }} n'a répondu à aucune question.</div>
+                    {% endfor %}
 
                     <hr>
 
+                </div>
+
+                <div class="tab-pane" id="settings">
+
+
+                    <hr>
+                    <div id="div_histogram"></div>
                 </div>
 
             </div><!--/tab-pane-->
         </div><!--/tab-content-->
 
     </div><!--/col-9-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_language('fr') }}
+
+        {{ gc_draw(piechart, 'div_histogram') }}
+    </script>
 {% endblock %}

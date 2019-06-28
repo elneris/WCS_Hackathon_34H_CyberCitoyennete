@@ -50,7 +50,7 @@ class User extends Fixture implements DependentFixtureInterface
             $eleve->setPassword($this->passwordEncoder->encodePassword($eleve, 'student'));
             $eleve->setLogin('Jimmy.Achour' . $x);
             $eleve->setRoles(['ROLE_USER']);
-            $eleve->setCategoryStep(1);
+            $eleve->setCategoryStep($this->getReference('cat'));
             $manager->persist($eleve);
             $this->addReference('eleve' . $x, $eleve);
             $manager->flush();

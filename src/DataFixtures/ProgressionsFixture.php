@@ -34,7 +34,7 @@ class ProgressionsFixture extends Fixture implements DependentFixtureInterface
         $manager->persist($progression2);
 
         $progression3 = new Progression();
-        $progression3->setUser($this->getReference('eleve', ));
+        $progression3->setUser($this->getReference('eleve'));
         $progression3->setCategory($this->getReference('cat1'));
         $progression3->setValid(0);
 

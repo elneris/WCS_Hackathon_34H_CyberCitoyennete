@@ -77,12 +77,13 @@
                         <b class="caret"></b>
                     </p>
                 </a>
+
                 <div class="collapse" id="eleves">
                     <ul class="nav">
                         <li class="nav-item ">
                             <a class="nav-link" href="{{ path('admin_index') }}">
                                 <span class="sidebar-mini"> <i class="fa fa-eye"></i> </span>
-                                <span class="sidebar-normal"> Toutes les elèves </span>
+                                <span class="sidebar-normal"> Tous les elèves </span>
                             </a>
                         </li>
                         <li class="nav-item ">
@@ -94,6 +95,33 @@
                     </ul>
                 </div>
             </li>
+
+
+            <li class="nav-item ">
+                <a class="nav-link" data-toggle="collapse" href="#question">
+                    <i class="material-icons">image</i>
+                    <p> Questions
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="question">
+                    <ul class="nav">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ path('admin_question') }}">
+                                <span class="sidebar-mini"> <i class="fa fa-eye"></i> </span>
+                                <span class="sidebar-normal"> Toutes les questions </span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ path('admin_new') }}">
+                                <span class="sidebar-mini"> <i class="fa fa-plus"></i> </span>
+                                <span class="sidebar-normal"> Ajouter </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
         </ul>
     </div>
 </div>

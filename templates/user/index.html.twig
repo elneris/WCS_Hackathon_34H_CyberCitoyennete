@@ -5,7 +5,8 @@
 {% block body %}
     <div class="images text-center">
         {% for category in categories %}
-            {% if app.user.categoryStep.id == category.id %}<img src="/assets/images/bonhomme.png" class="bonhomme{{ app.user.categoryStep.id }}">{% endif %}
+            {% if app.user.categoryStep.id == category.id %}<img src="/assets/images/bonhomme.png"
+                                                                class="bonhomme{{ app.user.categoryStep.id - 1 }}">{% endif %}
         {% endfor %}
         <img src="/assets/images/trait.png">
         <img src="/assets/images/Coupe.png">
@@ -19,7 +20,7 @@
             <h2  class="text-center titre_question">Clique sur le Quizz que tu dois faire :</h2>
             <div class="row pl-3 categories">
                 {% for category in categories %}
-                    <a href="{{ path('user_questionnaire', {id:app.user.id}) }}" class="col-5 p-3 m-4 text-center {% if app.user.categoryStep.id >= category.id %}bg-success{% else %}bg-dark{% endif %}">
+                    <a href="{{ path('user_questionnaire', {id:app.user.id}) }}" class="col-5 p-3 m-4 text-center {% if app.user.categoryStep.id > category.id %}bg-success{% else %}bg-dark{% endif %}">
                         {{ category.name }}
                     </a>
                 {% endfor %}
@@ -36,7 +37,7 @@
             </div>
             <div class="row justify-content-around">
                 {% for category in categories %}
-                    <img src="/assets/images/badge{{ category.id }}.png" class="{% if app.user.categoryStep.id >= category.id %} {% else %}opacity{% endif %}">
+                    <img src="/assets/images/badge{{ category.id }}.png" class="{% if app.user.categoryStep.id - 1 >= category.id %} {% else %}opacity{% endif %}">
                 {% endfor %}
             </div>
         </div>

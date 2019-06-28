@@ -1,6 +1,10 @@
 .opacity{
   opacity:0.5;
 }
+.bonhomme0{
+  position: relative;
+  left:2%;
+}
 
 .bonhomme1{
   position: relative;
@@ -25,12 +29,17 @@
 }
 
 .bouton_reponse{
-  background: lightgrey;
   margin: 20px;
-  color: black;
-  transition: 0.3s;
+  background-color: orange;
+  font-weight: bold;
+  border-radius: 20px;
 }
-
+.title_grey{
+  color: black;
+}
+.categories a{
+  color:white;
+}
 /*TEMPLATE*/
 
 .card {
@@ -65,6 +74,10 @@
 .titre_question{
   position: relative;
   top: 43px;
+}
+.question_media{
+  background:lightsteelblue;
+
 }
 *,
 *::before,
@@ -14671,7 +14684,7 @@ label {
 }
 
 .alert.alert-warning {
-  background-color: #ff9e0f;
+  background-color: red;
   color: #ffffff;
 }
 
@@ -16978,7 +16991,7 @@ form .checkbox-radios {
 }
 
 a {
-  color: white;
+  color: #89229b;
 }
 
 a:hover,

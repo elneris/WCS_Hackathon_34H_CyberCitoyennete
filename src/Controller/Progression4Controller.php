@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class Progression4Controller extends AbstractController
 {
     /**
-     * @Route("/user/category4/{id}", name="user_questionnaire")
+     * @Route("/user/category4/{id}", name="user_questionnaire4")
      */
     public function progression4Init(User $user, EntityManagerInterface $em, ProgressionRepository $progressionRepository)
     {
@@ -162,11 +162,8 @@ class Progression4Controller extends AbstractController
                 $count++;
             }
         }
+
         if ($count == 3){
-            $this->addFlash(
-                'success',
-                'Bravo vous avez fini avec succes la catégorie Cyber Harcelement'
-            );
             $progression = $progressionRepository->findOneBy(['user' => $user, 'category' => 4]);
             $progression->setValid(true);
             $user->setCategoryStep($categoryRepository->findOneBy(['id' => 4]));
@@ -174,17 +171,8 @@ class Progression4Controller extends AbstractController
             $em->persist($user);
             $em->flush();
 
-        } elseif ($count == 2) {
-            $this->addFlash(
-                'warning',
-                'Ce niveau est terminée mais vous n\'avez répondu juste à toute les réponses'
-            );
-            $progression = $progressionRepository->findOneBy(['user' => $user, 'category' => 4]);
-            $progression->setValid(true);
-            $user->setCategoryStep($categoryRepository->findOneBy(['id' => 4]));
-            $em->persist($progression);
-            $em->persist($user);
-            $em->flush();
+            return $this->render('winner.html.twig', ['user' => $user]);
+
         } else {
             $this->addFlash(
                 'danger',

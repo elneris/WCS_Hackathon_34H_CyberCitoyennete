@@ -8,6 +8,7 @@ use App\Entity\Category;
 use App\Entity\Progression;
 use App\Entity\Tentative;
 use App\Entity\User;
+use App\Repository\CategoryRepository;
 use App\Repository\ProgressionRepository;
 use App\Repository\QuestionRepository;
 use App\Repository\TentativeRepository;
@@ -130,7 +131,7 @@ class ProgressionController extends AbstractController
     /**
      * @Route("/user/resultat/{value}/{id}", name="user_result")
      */
-    public function result(ProgressionRepository $progressionRepository, QuestionRepository $questionRepository, $value, $id, EntityManagerInterface $em, UserRepository $userRepository, TentativeRepository $tentativeRepository)
+    public function result(CategoryRepository $categoryRepository, ProgressionRepository $progressionRepository, QuestionRepository $questionRepository, $value, $id, EntityManagerInterface $em, UserRepository $userRepository, TentativeRepository $tentativeRepository)
     {
         $user = $userRepository->findOneBy(['id' => $id]);
 
@@ -161,15 +162,37 @@ class ProgressionController extends AbstractController
                 $count++;
             }
         }
-        if ($count = 3){
+        if ($count == 3){
             $this->addFlash(
                 'success',
                 'Bravo vous avez fini avec succes la catégorie Cyber Harcelement'
             );
             $progression = $progressionRepository->findOneBy(['user' => $user, 'category' => 1]);
             $progression->setValid(true);
+            $user->setCategoryStep($categoryRepository->findOneBy(['id' => 2]));
+            $em->persist($progression);
+            $em->persist($user);
+            $em->flush();
 
+        } elseif ($count == 2) {
+            $this->addFlash(
+                'warning',
+                'Ce niveau est terminée mais vous n\'avez répondu juste à toute les réponses'
+            );
+            $progression = $progressionRepository->findOneBy(['user' => $user, 'category' => 1]);
+            $progression->setValid(true);
+            $user->setCategoryStep($categoryRepository->findOneBy(['id' => 2]));
+            $em->persist($progression);
+            $em->persist($user);
+            $em->flush();
+        } else {
+            $this->addFlash(
+                'danger',
+                'Vous n\'avez pas bien répondu'
+            );
         }
+
+        return $this->redirectToRoute('user_index');
 
     }
 }

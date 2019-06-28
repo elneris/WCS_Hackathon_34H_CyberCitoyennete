@@ -58,7 +58,7 @@ class Question extends Fixture implements DependentFixtureInterface
         $question4->setWrongAnswerOne('Je like');
         $question4->setWrongAnswerTwo('Je commente positivement');
         $question4->setWrongAnswerThree('J\'ignore');
-        $question4->setCategory($this->getReference('cat3'));
+        $question4->setCategory($this->getReference('cat1'));
         $manager->persist($question4);
         $manager->flush();
 
@@ -68,7 +68,7 @@ class Question extends Fixture implements DependentFixtureInterface
         $question5->setWrongAnswerOne('Indifférent');
         $question5->setWrongAnswerTwo('Triste');
         $question5->setWrongAnswerThree('Content');
-        $question5->setCategory($this->getReference('cat3'));
+        $question5->setCategory($this->getReference('cat1'));
         $manager->persist($question5);
         $manager->flush();
 
@@ -78,7 +78,7 @@ class Question extends Fixture implements DependentFixtureInterface
         $questions6->setWrongAnswerOne('Ne rien dire');
         $questions6->setWrongAnswerTwo('En parler au personnel du collège');
         $questions6->setWrongAnswerThree('Répondre aux commentaires');
-        $questions6->setCategory($this->getReference('cat3'));
+        $questions6->setCategory($this->getReference('cat1'));
         $manager->persist($questions6);
         $manager->flush();
 

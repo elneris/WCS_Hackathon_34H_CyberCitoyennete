@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProgressionController extends AbstractController
 {
     /**
-     * @Route("/user/category/{id}", name="user_questionnaire4")
+     * @Route("/user/category/{id}", name="user_questionnaire")
      */
     public function progressionInit(User $user, EntityManagerInterface $em, ProgressionRepository $progressionRepository)
     {

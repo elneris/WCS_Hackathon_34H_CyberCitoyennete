@@ -5,14 +5,6 @@
 {% block body %}
    <h1>Ajouter une nouvelle categorie</h1>
 
-   {% for category, messages in app.flashes %}
-      {% for message in messages %}
-         <div class="alert alert-{{ category }}">
-            {{ message }}
-         </div>
-      {% endfor %}
-   {% endfor %}
-
    {{ form_start(form) }}
    {{ form_row(form.name) }}
 

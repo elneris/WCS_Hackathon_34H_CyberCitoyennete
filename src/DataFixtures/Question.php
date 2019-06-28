@@ -52,5 +52,35 @@ class Question extends Fixture implements DependentFixtureInterface
         $manager->persist($questions3);
         $manager->flush();
 
+        $question4 = new \App\Entity\Question();
+        $question4->setValue('En voyant ce post, quelle est ta réaction?');
+        $question4->setGoodAnswer('Je commente négativement');
+        $question4->setWrongAnswerOne('Je like');
+        $question4->setWrongAnswerTwo('Je commente positivement');
+        $question4->setWrongAnswerThree('J\'ignore');
+        $question4->setCategory($this->getReference('cat3'));
+        $manager->persist($question4);
+        $manager->flush();
+
+        $question5 = new \App\Entity\Question();
+        $question5->setValue('Le nouveau de 5B n\'est pas venu à l\'école cette semaine: Que ressens tu?');
+        $question5->setGoodAnswer('Coupable');
+        $question5->setWrongAnswerOne('Indifférent');
+        $question5->setWrongAnswerTwo('Triste');
+        $question5->setWrongAnswerThree('Content');
+        $question5->setCategory($this->getReference('cat3'));
+        $manager->persist($question5);
+        $manager->flush();
+
+        $questions6 = new \App\Entity\Question();
+        $questions6->setValue('A sa place, qu\'aurais tu fais?');
+        $questions6->setGoodAnswer('Parler à tes parents');
+        $questions6->setWrongAnswerOne('Ne rien dire');
+        $questions6->setWrongAnswerTwo('En parler au personnel du collège');
+        $questions6->setWrongAnswerThree('Répondre aux commentaires');
+        $questions6->setCategory($this->getReference('cat3'));
+        $manager->persist($questions6);
+        $manager->flush();
+
     }
 }

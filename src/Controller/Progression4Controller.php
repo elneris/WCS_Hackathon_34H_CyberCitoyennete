@@ -18,12 +18,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ProgressionController extends AbstractController
+class Progression4Controller extends AbstractController
 {
     /**
-     * @Route("/user/category/{id}", name="user_questionnaire4")
+     * @Route("/user/category4/{id}", name="user_questionnaire")
      */
-    public function progressionInit(User $user, EntityManagerInterface $em, ProgressionRepository $progressionRepository)
+    public function progression4Init(User $user, EntityManagerInterface $em, ProgressionRepository $progressionRepository)
     {
         $allProgression = $progressionRepository->findAll();
         $count = 0;
@@ -43,39 +43,39 @@ class ProgressionController extends AbstractController
 
         }
 
-        return $this->redirectToRoute('user_question1');
+        return $this->redirectToRoute('user_question41');
     }
 
     /**
-     * @Route("/user/question-1", name="user_question1")
+     * @Route("/user/question-41", name="user_question41")
      */
-    public function question1(QuestionRepository $questionRepository)
+    public function question41(QuestionRepository $questionRepository)
     {
-        $question = $questionRepository->findOneBy(['id' => 1]);
+        $question = $questionRepository->findOneBy(['id' => 4]);
 
-        return $this->render('question/categorie1/question1.html.twig', [
+        return $this->render('question/categorie4/question1.html.twig', [
             'question' => $question
         ]);
     }
 
     /**
-     * @Route("/user/question-2/{value}/{id}", name="user_question2")
+     * @Route("/user/question-42/{value}/{id}", name="user_question42")
      */
-    public function question2(QuestionRepository $questionRepository, $value, $id, EntityManagerInterface $em, UserRepository $userRepository, TentativeRepository $tentativeRepository)
+    public function question42(QuestionRepository $questionRepository, $value, $id, EntityManagerInterface $em, UserRepository $userRepository, TentativeRepository $tentativeRepository)
     {
         $user = $userRepository->findOneBy(['id' => $id]);
 
         $allTentative = $tentativeRepository->findAll();
 
         foreach ($allTentative as $tentatives){
-            if ($user->getId() === $tentatives->getUser()->getId() && $questionRepository->findOneBy(['id' => 1])->getId() === $tentatives->getQuestion()->getId()){
+            if ($user->getId() === $tentatives->getUser()->getId() && $questionRepository->findOneBy(['id' => 4])->getId() === $tentatives->getQuestion()->getId()){
                 $em->remove($tentatives);
             }
         }
 
         $tentative = new Tentative();
         $tentative->setUser($user);
-        $tentative->setQuestion($questionRepository->findOneBy(['id' => 1]));
+        $tentative->setQuestion($questionRepository->findOneBy(['id' => 4]));
         if ($value == 0){
             $tentative->setResponse(false);
         } else {
@@ -85,16 +85,16 @@ class ProgressionController extends AbstractController
         $em->persist($tentative);
         $em->flush();
 
-        $question = $questionRepository->findOneBy(['id' => 2]);
+        $question = $questionRepository->findOneBy(['id' => 5]);
 
-        return $this->render('question/categorie1/question2.html.twig', [
+        return $this->render('question/categorie4/question2.html.twig', [
             'question' => $question
         ]);
 
     }
 
     /**
-     * @Route("/user/question-3/{value}/{id}", name="user_question3")
+     * @Route("/user/question-43/{value}/{id}", name="user_question43")
      */
     public function question3(QuestionRepository $questionRepository, $value, $id, EntityManagerInterface $em, UserRepository $userRepository, TentativeRepository $tentativeRepository)
     {
@@ -103,14 +103,14 @@ class ProgressionController extends AbstractController
         $allTentative = $tentativeRepository->findAll();
 
         foreach ($allTentative as $tentatives){
-            if ($user->getId() === $tentatives->getUser()->getId() && $questionRepository->findOneBy(['id' => 2])->getId() === $tentatives->getQuestion()->getId()){
+            if ($user->getId() === $tentatives->getUser()->getId() && $questionRepository->findOneBy(['id' => 5])->getId() === $tentatives->getQuestion()->getId()){
                 $em->remove($tentatives);
             }
         }
 
         $tentative = new Tentative();
         $tentative->setUser($user);
-        $tentative->setQuestion($questionRepository->findOneBy(['id' => 2]));
+        $tentative->setQuestion($questionRepository->findOneBy(['id' => 5]));
         if ($value == 0){
             $tentative->setResponse(false);
         } else {
@@ -120,16 +120,16 @@ class ProgressionController extends AbstractController
         $em->persist($tentative);
         $em->flush();
 
-        $question = $questionRepository->findOneBy(['id' => 3]);
+        $question = $questionRepository->findOneBy(['id' => 6]);
 
-        return $this->render('question/categorie1/question3.html.twig', [
+        return $this->render('question/categorie4/question3.html.twig', [
             'question' => $question
         ]);
 
     }
 
     /**
-     * @Route("/user/resultat/{value}/{id}", name="user_result")
+     * @Route("/user/resultat4/{value}/{id}", name="user_result4")
      */
     public function result(CategoryRepository $categoryRepository, ProgressionRepository $progressionRepository, QuestionRepository $questionRepository, $value, $id, EntityManagerInterface $em, UserRepository $userRepository, TentativeRepository $tentativeRepository)
     {
@@ -138,14 +138,14 @@ class ProgressionController extends AbstractController
         $allTentative = $tentativeRepository->findAll();
 
         foreach ($allTentative as $tentatives){
-            if ($user->getId() === $tentatives->getUser()->getId() && $questionRepository->findOneBy(['id' => 3])->getId() === $tentatives->getQuestion()->getId()){
+            if ($user->getId() === $tentatives->getUser()->getId() && $questionRepository->findOneBy(['id' => 6])->getId() === $tentatives->getQuestion()->getId()){
                 $em->remove($tentatives);
             }
         }
 
         $tentative = new Tentative();
         $tentative->setUser($user);
-        $tentative->setQuestion($questionRepository->findOneBy(['id' => 3]));
+        $tentative->setQuestion($questionRepository->findOneBy(['id' => 6]));
         if ($value == 0){
             $tentative->setResponse(false);
         } else {
@@ -167,9 +167,9 @@ class ProgressionController extends AbstractController
                 'success',
                 'Bravo vous avez fini avec succes la catégorie Cyber Harcelement'
             );
-            $progression = $progressionRepository->findOneBy(['user' => $user, 'category' => 1]);
+            $progression = $progressionRepository->findOneBy(['user' => $user, 'category' => 4]);
             $progression->setValid(true);
-            $user->setCategoryStep($categoryRepository->findOneBy(['id' => 2]));
+            $user->setCategoryStep($categoryRepository->findOneBy(['id' => 4]));
             $em->persist($progression);
             $em->persist($user);
             $em->flush();
@@ -179,9 +179,9 @@ class ProgressionController extends AbstractController
                 'warning',
                 'Ce niveau est terminée mais vous n\'avez répondu juste à toute les réponses'
             );
-            $progression = $progressionRepository->findOneBy(['user' => $user, 'category' => 1]);
+            $progression = $progressionRepository->findOneBy(['user' => $user, 'category' => 4]);
             $progression->setValid(true);
-            $user->setCategoryStep($categoryRepository->findOneBy(['id' => 2]));
+            $user->setCategoryStep($categoryRepository->findOneBy(['id' => 4]));
             $em->persist($progression);
             $em->persist($user);
             $em->flush();

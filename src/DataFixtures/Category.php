@@ -26,6 +26,7 @@ class Category extends Fixture
 
         $manager->persist($cat);
         $this->addReference('cat', $cat);
+        $this->addReference('cat3', $cat3);
         $manager->persist($cat1);
         $manager->persist($cat2);
         $manager->persist($cat3);

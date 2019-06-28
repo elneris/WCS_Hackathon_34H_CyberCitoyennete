@@ -20,9 +20,15 @@
             <h2  class="text-center titre_question">Clique sur le Quizz que tu dois faire :</h2>
             <div class="row pl-3 categories">
                 {% for category in categories %}
-                    <a href="{{ path('user_questionnaire', {id:app.user.id}) }}" class="col-5 p-3 m-4 text-center {% if app.user.categoryStep.id > category.id %}bg-success{% else %}bg-dark{% endif %}">
+                    {% if category.id <4 %}
+                    <a href="{{ path('user_questionnaire', {id:app.user.id}) }}" class="col-5 p-3 m-4 text-center {% if app.user.categoryStep.id >= category.id +1 or app.user.categoryStep.id == 3 %}bg-success{% else %}bg-dark{% endif %}">
                         {{ category.name }}
                     </a>
+                    {% else %}
+                        <a href="{{ path('user_questionnaire4', {id:app.user.id}) }}" class="col-5 p-3 m-4 text-center {% if app.user.categoryStep.id == 4 %}bg-success{% else %}bg-dark{% endif %}">
+                            {{ category.name }}
+                        </a>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
@@ -37,7 +43,11 @@
             </div>
             <div class="row justify-content-around">
                 {% for category in categories %}
-                    <img src="/assets/images/badge{{ category.id }}.png" class="{% if app.user.categoryStep.id - 1 >= category.id %} {% else %}opacity{% endif %}">
+                    {% if category.id <4 %}
+                    <img src="/assets/images/badge{{ category.id }}.png" class="{% if app.user.categoryStep.id  >= category.id +1 or app.user.categoryStep.id == 3 %} {% else %}opacity{% endif %}">
+                {% else %}
+                    <img src="/assets/images/badge{{ category.id }}.png" class="{% if app.user.categoryStep.id  > 3 %} {% else %}opacity{% endif %}">
+                {% endif %}
                 {% endfor %}
             </div>
         </div>

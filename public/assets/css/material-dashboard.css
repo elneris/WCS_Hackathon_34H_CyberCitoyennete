@@ -23,6 +23,14 @@
 .categories{
   margin-top: 120px;
 }
+
+.bouton_reponse{
+  background: lightgrey;
+  margin: 20px;
+  color: black;
+  transition: 0.3s;
+}
+
 /*TEMPLATE*/
 
 .card {

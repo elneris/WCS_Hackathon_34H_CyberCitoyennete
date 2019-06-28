@@ -6,7 +6,9 @@ use App\Entity\Classe;
 use App\Entity\User;
 use App\Form\ClasseType;
 use App\Repository\ClasseRepository;
+use App\Repository\TentativeRepository;
 use App\Repository\UserRepository;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,12 +19,42 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin", name="admin_index")
      */
-    public function index(UserRepository $userRepository, ClasseRepository $classeRepository)
+    public function index(UserRepository $userRepository, ClasseRepository $classeRepository, TentativeRepository $tentativeRepository)
     {
+        $answers =  $tentativeRepository->findAll();
+
+        $goodAnswer=0;
+        $badAnswer=0;
+
+        $totalAnswers= [];
+
+        foreach ($answers as $answer) {
+            ($answer->getResponse()) ? $goodAnswer++ : $badAnswer++;
+        }
+
+        $pieChart = new PieChart();
+
+        $pieChart->getData()->setArrayToDataTable(
+            [['Task', 'Hours per Day'],
+                ['Bonnes réponses',     $goodAnswer],
+                ['Mauvaises réponses',      $badAnswer],
+            ]
+        );
+        $pieChart->getOptions()->setTitle('Taux de réussite');
+        $pieChart->getOptions()->setHeight(600);
+        $pieChart->getOptions()->setWidth(900);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(22);
+
+
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
             'allStudent' => $userRepository->findAll(),
-            'allClasse' => $classeRepository->findAll()
+            'allClasse' => $classeRepository->findAll(),
+            'piechart' => $pieChart
         ]);
     }
 

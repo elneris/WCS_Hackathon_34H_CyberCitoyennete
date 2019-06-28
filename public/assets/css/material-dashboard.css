@@ -1,5 +1,22 @@
+.winner-certification{
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  width: 900px;
+}
+
+.winner-name{
+  position: absolute;
+  top: 46%;
+  left: 43%;
+}
+
 .opacity{
   opacity:0.5;
+}
+.bonhomme0{
+  position: relative;
+  left:2%;
 }
 
 .bonhomme1{
@@ -25,18 +42,56 @@
 }
 
 .bouton_reponse{
-  background: lightgrey;
   margin: 20px;
-  color: black;
-  transition: 0.3s;
+  background-color: orange;
+  font-weight: bold;
+  border-radius: 20px;
 }
-
+.title_grey{
+  color: black;
+}
+.categories a{
+  color:white;
+}
 /*TEMPLATE*/
 
 .card {
   font-size: .875rem;
 }
 
+.déconnexion{
+  background: #2196F4;
+  width: 10%;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  position: relative;
+  bottom: 221px;
+  left: 10px;
+
+}
+.déconnexion:hover{
+  color:white;
+  opacity: 0.8;
+}
+
+.image_interrogation{
+  width:600px ;
+}
+
+.barre{
+  width: 83%;
+  border-top: 0.2px solid #36373a
+}
+
+.titre_question{
+  position: relative;
+  top: 43px;
+}
+.question_media{
+  background:lightsteelblue;
+
+}
 *,
 *::before,
 *::after {
@@ -6206,14 +6261,18 @@ button.bg-secondary:focus {
 }
 
 .bg-success {
-  background-color: #4caf50 !important;
+  background-color: orange  !important;
+  font-weight: bold;
+  border-radius: 20px;
 }
 
 a.bg-success:hover,
 a.bg-success:focus,
 button.bg-success:hover,
 button.bg-success:focus {
-  background-color: #3d8b40 !important;
+  background-color: orange !important;
+  opacity:0.8;
+  color:#c30bff;
 }
 
 .bg-info {
@@ -6261,14 +6320,18 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+  background-color: #c30bff !important;
+  font-weight: bold;
+  border-radius:20px;
 }
 
 a.bg-dark:hover,
 a.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
-  background-color: #1d2124 !important;
+  background-color: #c30bff  !important;
+  opacity:0.8;
+  color:orange;
 }
 
 .bg-white {
@@ -14634,7 +14697,7 @@ label {
 }
 
 .alert.alert-warning {
-  background-color: #ff9e0f;
+  background-color: red;
   color: #ffffff;
 }
 
@@ -16941,7 +17004,7 @@ form .checkbox-radios {
 }
 
 a {
-  color: #9c27b0;
+  color: #89229b;
 }
 
 a:hover,

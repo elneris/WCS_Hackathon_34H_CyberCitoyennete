@@ -6,6 +6,8 @@
 
     <h1>Bienvenue : {{ app.user.firstname }} {{ app.user.lastname }}</h1>
 
+    <div id="div_histogram"></div>
+
     <div class="dropdown">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Liste des classes
@@ -45,4 +47,11 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_language('fr') }}
+
+        {{ gc_draw(piechart, 'div_histogram') }}
+    </script>
 {% endblock %}

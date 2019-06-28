@@ -5,16 +5,16 @@
 {% block body %}
 
     <div class="question_media p-3 text-center">
-        <img src="/assets/images/interrogation.jpg" alt="q1" class="w-50">
+        <img src="/assets/images/interrogation.jpg" alt="q1" class="image_interrogation">
         <h1>{{ question.value }}</h1>
     </div>
     <div class="reponses">
         <div class="row text-center">
-            <a href="{{ path('user_result', {value:1, id:app.user.id}) }}" class="bouton_reponse border col-3 offset-3 p-4">{{ question.goodAnswer }}</a>
+            <a href="{{ path('user_result', {value:0, id:app.user.id}) }}" class="bouton_reponse border col-3 offset-3 p-4">{{ question.wrongAnswerTwo }}</a>
             <a href="{{ path('user_result', {value:0, id:app.user.id}) }}" class="bouton_reponse border col-3 p-4">{{ question.wrongAnswerOne }}</a>
         </div>
         <div class="row text-center">
-            <a href="{{ path('user_result', {value:0, id:app.user.id}) }}" class="bouton_reponse border col-3 offset-3 p-4">{{ question.wrongAnswerTwo }}</a>
+            <a href="{{ path('user_result', {value:1, id:app.user.id}) }}" class="bouton_reponse border col-3 offset-3 p-4">{{ question.goodAnswer }}</a>
             <a href="{{ path('user_result', {value:0, id:app.user.id}) }}" class="bouton_reponse border col-3 p-4">{{ question.wrongAnswerThree }}</a>
         </div>
     </div>

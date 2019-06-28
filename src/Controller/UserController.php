@@ -39,4 +39,12 @@ class UserController extends AbstractController
             'questions' => $result,
         ]);
     }
+
+    /**
+     * @Route("/winner/", name="winner")
+     */
+    public function winner()
+    {
+        return $this->render('winner.html.twig');
+    }
 }

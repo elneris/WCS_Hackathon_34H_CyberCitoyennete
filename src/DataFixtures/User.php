@@ -34,6 +34,7 @@ class User extends Fixture implements DependentFixtureInterface
         $eleve = new \App\Entity\User();
         $eleve->setFirstname('Jimmy');
         $eleve->setLastname('Achour');
+        $eleve->setClass($this->getReference('class' . rand(1,2)));
         $eleve->setPassword($this->passwordEncoder->encodePassword($eleve, 'Jimmy.Achour2019'));
         $eleve->setLogin('Jimmy.Achour');
         $eleve->setRoles(['ROLE_USER']);

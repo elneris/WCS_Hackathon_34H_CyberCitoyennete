@@ -4,14 +4,19 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\CategoryRepository;
+use App\Repository\QuestionRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/user", name="user_")
+ */
+
 class UserController extends AbstractController
 {
     /**
-     * @Route("/user", name="user_index")
+     * @Route("/", name="index")
      * @param CategoryRepository $categories
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -20,6 +25,18 @@ class UserController extends AbstractController
         $result = $categories->findAll();
         return $this->render('user/index.html.twig', [
             'categories' => $result,
+        ]);
+    }
+
+    /**
+     * @Route("/quizz", name="quizz")
+     */
+    public function quizz(QuestionRepository $questions)
+    {
+        $result = $questions->findAll();
+
+        return $this->render('user/quizz.html.twig', [
+            'questions' => $result,
         ]);
     }
 }

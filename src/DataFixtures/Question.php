@@ -37,7 +37,7 @@ class Question extends Fixture implements DependentFixtureInterface
         $question2->setGoodAnswer('Coupable');
         $question2->setWrongAnswerOne('Indifférent');
         $question2->setWrongAnswerTwo('Triste');
-        $question2->setWrongAnswerThree('');
+        $question2->setWrongAnswerThree('Content');
         $question2->setCategory($this->getReference('cat'));
         $manager->persist($question2);
         $manager->flush();
